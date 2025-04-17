@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overloaded Happiness🍓</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #fffaf0;
+      color: #333;
+    }
+    header {
+      background-color: #ff6f61;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #fff0e6;
+      padding: 0.75rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #ff6f61;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-family: 'Pacifico', cursive;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 1rem;
+    }
+    .content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .recipe-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .recipe-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .recipe-content {
+      padding: 1rem;
+    }
+    .recipe-content h3 {
+      color: #ff6f61;
+    }
+    .section {
+      margin-top: 3rem;
+    }
+    .section h2 {
+      color: #ff6f61;
+      margin-bottom: 1rem;
+    }
+    .reviews, .contact-form, .explore-dishes {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .review-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background: #fff0e6;
+      color: #999;
+    }
+    .confirmation {
+      margin-top: 1rem;
+      color: green;
+      display: none;
+    }
+    .confirmation {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: none;
+  font-weight: bold;
+  animation: fadeInOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Make nav items stack on small screens */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero {
+    font-size: 1.8rem;
+    height: 200px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .recipe-card img {
+    height: 180px;
+  }
+
+  .content {
+    padding: 0.5rem;
+    margin: 1rem auto;
+  }
+
+  form input, form textarea, form button {
+    font-size: 1rem;
+  }
+
+  .confirmation {
+    bottom: 20px;
+    right: 20px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Even smaller devices */
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  .hero {
+    font-size: 1.5rem;
+    height: 160px;
+  }
+
+  .recipe-content h3 {
+    font-size: 1.2rem;
+  }
+
+  form input, form textarea, form button {
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+  }
+}
+
+
+.confirmation {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: none; /* Hidden by default */
+  font-weight: bold;
+  animation: fadeInOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>Overloaded Happiness🍓</header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#recipes">Recipes</a>
+    <a href="#explore">Explore</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero">
+    Explore Delicious Homemade Recipes
+  </div>
+
+  <div class="content" id="recipes">
+    <h2>Latest Recipes</h2>
+    
+    <!-- Recipe cards will be added here by JavaScript -->
+  </div>
+
+  <div class="content section" id="explore">
+    <h2>Explore Dishes</h2>
+    <div class="explore-dishes">
+      <p>Looking for something specific? Browse dishes by cuisine, dietary preference, or cooking time. Whether you're into vegan meals, spicy Asian dishes, or quick dinners, we've got you covered!</p>
+    </div>
+  </div>
+
+  <div class="content section" id="reviews">
+    <h2>Community Reviews</h2>
+    <div class="reviews">
+      <div class="review-item">
+        <strong>Shreya.:</strong> "The creamy vegie pasta was a Super easy and delicious </b>."
+      </div>
+      <div class="review-item">
+        <strong>Gracy.:</strong> "Loved the spicy ramen! It had the perfect taste</b>"
+      </div>
+      <div class="review-item">
+        <strong>Shivam.:</strong> "These chocolaty pancakes are mouth watering</b>"
+      </div>
+      <div class="review-item">
+        <strong>Shashwat.:</strong> "These dishes are now my Sunday tradition</b>"
+      </div>
+    </div>
+  </div>
+
+  <div class="content section" id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message or Recipe Suggestion..." required></textarea>
+        <button type="submit" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Popup Message -->
+  <div class="confirmation" id="confirmationMessage">📨 Your message has been sent!</div>
+  
+
+  <div class="footer">© 2025 Overloaded Happiness🍓</div>
+
+  <div id="recipes"></div>
+  <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  // all the script content goes here...
+
+  const recipes = [
+      {
+        title: "Creamy Vegie Pasta",
+        image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2021/02/05/Baked-Feta-Pasta-4_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1615916524567.jpeg",
+        description: "A rich and creamy pasta with garlic, mushrooms, and fresh herbs.",
+        ingredients: [
+          "200g penne pasta",
+          "1 tbsp olive oil",
+          "2 cloves garlic (minced)",
+          "1 cup mushrooms (sliced)",
+          "1/2 cup bell peppers (chopped)",
+          "1/2 cup cream",
+          "Salt & pepper to taste",
+          "Fresh parsley for garnish"
+        ],
+        steps: [
+          "Boil pasta until al dente. Drain and set aside.",
+          "Heat olive oil in a pan, sauté garlic until fragrant.",
+          "Add mushrooms and bell peppers; cook until soft.",
+          "Stir in cream, simmer for 3-4 minutes.",
+          "Add pasta, mix well, and season with salt and pepper.",
+          "Garnish with parsley and serve hot."
+        ]
+      },
+      {
+        title: "Chocolaty Pancakes",
+        image: "https://greedyeats.com/wp-content/uploads/2024/02/Chocolate-Pancakes.jpg",
+        description: "Fluffy pancakes topped with juicy strawberries and syrup.",
+        ingredients: [
+          "1 cup all-purpose flour",
+          "2 tbsp cocoa powder",
+          "2 tbsp sugar",
+          "1 tsp baking powder",
+          "1 egg",
+          "3/4 cup milk",
+          "1 tsp vanilla extract",
+          "Strawberries and syrup for topping"
+        ],
+        steps: [
+          "In a bowl, whisk together flour, cocoa, sugar, and baking powder.",
+          "Add egg, milk, and vanilla extract. Mix until smooth.",
+          "Heat a non-stick pan over medium heat. Pour batter and cook until bubbles form.",
+          "Flip and cook the other side until golden.",
+          "Top with strawberries and drizzle with syrup."
+        ]
+      },
+      {
+        title: "Margherita Pizza",
+        image: "https://content.jdmagicbox.com/v2/comp/chennai/h2/044pxx44.xx44.220611033411.f4h2/catalogue/dominos-madhiravedu-chennai-pizza-outlets-1vpakjaakx.jpg",
+        description: "Classic Italian pizza with fresh basil, tomatoes, and mozzarella.",
+        ingredients: [
+          "1 pizza base",
+          "1/2 cup tomato sauce",
+          "1 cup mozzarella cheese (shredded)",
+          "Fresh basil leaves",
+          "1 tbsp olive oil",
+          "Salt & pepper to taste"
+        ],
+        steps: [
+          "Preheat oven to 220°C (428°F).",
+          "Spread tomato sauce evenly on pizza base.",
+          "Add mozzarella cheese and basil leaves.",
+          "Drizzle with olive oil and season with salt and pepper.",
+          "Bake for 10–12 minutes until crust is golden and cheese is bubbly.",
+          "Slice and serve hot."
+        ]
+      }
+    ];
+  
+    const container = document.getElementById('recipes');
+  
+    recipes.forEach(recipe => {
+      const card = document.createElement('div');
+      card.className = 'recipe-card';
+  
+      const ingredientsHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
+      const stepsHTML = recipe.steps.map((step, idx) => `<li><strong>Step ${idx + 1}:</strong> ${step}</li>`).join('');
+  
+      card.innerHTML = `
+        <img src="${recipe.image}" alt="${recipe.title}">
+        <div class="recipe-content">
+          <h3>${recipe.title}</h3>
+          <p>${recipe.description}</p>
+          <h4>Ingredients:</h4>
+          <ul>${ingredientsHTML}</ul>
+          <h4>Steps:</h4>
+          <ol>${stepsHTML}</ol>
+        </div>
+      `;
+  
+      container.appendChild(card);
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from actually submitting (to show the popup)
+
+  // Display the success message popup
+  document.getElementById('confirmationMessage').style.display = 'block';
+
+  // Hide the popup after 5 seconds (adjust time as needed)
+  setTimeout(function() {
+    document.getElementById('confirmationMessage').style.display = 'none';
+  }, 5000);
+
+  // Optionally, clear the form fields after submission
+  document.getElementById('contactForm').reset();
+});
+
+
+  
+});
+
+</script>
+
+
+   
